@@ -1,0 +1,11 @@
+diff -r -u xmms-1.2.11/Input/mpg123/tabinit.c xmms-1.2.11.p/Input/mpg123/tabinit.c
+--- xmms-1.2.11/Input/mpg123/tabinit.c	2003-05-19 23:22:06.000000000 +0200
++++ xmms-1.2.11.p/Input/mpg123/tabinit.c	2022-03-19 13:06:35.651517145 +0100
+@@ -2,6 +2,7 @@
+ #include <stdlib.h>
+ 
+ #include "mpg123.h"
++#include <math.h>
+ 
+ real mpg123_decwin[512 + 32];
+ static real cos64[16], cos32[8], cos16[4], cos8[2], cos4[1];

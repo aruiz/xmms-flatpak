@@ -1,0 +1,142 @@
+{
+    "app-id": "org.xmms.XMMS",
+    "runtime": "org.gnome.Platform",
+    "sdk": "org.gnome.Sdk",
+    "runtime-version": "41",
+    "command": "xmms",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--share=network",
+        "--filesystem=home",
+        "--device=all",
+        "--socket=pulseaudio"
+    ],
+    "modules": [
+        {
+            "name": "glib1",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-static"
+            ],
+            "make-args": [
+            	"CFLAGS=-std=c99",
+            	"LIBTOOL=/usr/bin/libtool --tag=CC"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glib/1.2/glib-1.2.10.tar.gz",
+                    "sha256": "6e1ce7eedae713b11db82f11434d455d8a1379f783a79812cd2e05fc024a8d9f"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "glib-1.2.10-autotools.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "glib-1.2.10-format.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-gcc34.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-isowarning.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-multilib.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-no_undefined.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-underquoted.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "glib-1.2.10-unused-dep.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "config-sub.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "config-guess.patch"
+                }
+            ]
+        },
+        {
+            "name": "gtk1",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-static"
+            ],
+            "make-args": [
+            	"CFLAGS=-std=c89",
+            	"LIBTOOL=/usr/bin/libtool --tag=CC"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk+/1.2/gtk+-1.2.8.tar.gz",
+                    "sha256": "d7d94ea144cf5e77819f0aded1a01e60b31e83703e5f7eda5ca4a4007232c7ab"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 1,
+                    "path": "timezone.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "config-sub.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 0,
+                    "path": "config-guess.patch"
+                }
+           ]
+	},
+        {
+            "name": "xmms",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-oss"
+            ],
+            "make-args": [
+            	"CFLAGS=-std=c89 -DM_PI=3.1415926535897932384 -DM_SQRT2=1.41421356237309504880",
+            	"LIBTOOL=/usr/bin/libtool --tag=CC"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.xmms.org/files/1.2.x/xmms-1.2.11.tar.bz2",
+                    "sha256": "7ec15c56632b6c82e61ccddeaefd372359af2f005708a58cdf3951c574b20390"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 1,
+                    "path": "xmms-config-sub.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 1,
+                    "path": "xmms-math.patch"
+                }
+            ]
+        }
+    ]
+}
+
