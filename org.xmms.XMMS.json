@@ -9,7 +9,9 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--share=network",
-        "--filesystem=home",
+        "--filesystem=xdg-download",
+        "--filesystem=xdg-music",
+        "--filesystem=~/.xmms/:create",
         "--device=all",
         "--socket=pulseaudio"
     ],
