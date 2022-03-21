@@ -115,7 +115,7 @@
                 "--disable-oss"
             ],
             "make-args": [
-            	"CFLAGS=-std=c89 -DM_PI=3.1415926535897932384 -DM_SQRT2=1.41421356237309504880",
+            	"CFLAGS=-std=gnu89 -DM_PI=3.1415926535897932384 -DM_SQRT2=1.41421356237309504880",
             	"LIBTOOL=/usr/bin/libtool --tag=CC"
             ],
             "sources": [
@@ -132,7 +132,7 @@
                 {
                     "type": "patch",
                     "strip-components": 1,
-                    "path": "xmms-math.patch"
+                    "path": "xmms-icon.patch"
                 }
             ]
         }
