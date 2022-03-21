@@ -82,7 +82,7 @@
                 "--disable-static"
             ],
             "make-args": [
-            	"CFLAGS=-std=c89",
+            	"CFLAGS=-std=gnu89",
             	"LIBTOOL=/usr/bin/libtool --tag=CC"
             ],
             "sources": [
@@ -90,11 +90,6 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gtk+/1.2/gtk+-1.2.8.tar.gz",
                     "sha256": "d7d94ea144cf5e77819f0aded1a01e60b31e83703e5f7eda5ca4a4007232c7ab"
-                },
-                {
-                    "type": "patch",
-                    "strip-components": 1,
-                    "path": "timezone.patch"
                 },
                 {
                     "type": "patch",
@@ -128,11 +123,6 @@
                     "type": "patch",
                     "strip-components": 1,
                     "path": "xmms-config-sub.patch"
-                },
-                {
-                    "type": "patch",
-                    "strip-components": 1,
-                    "path": "xmms-icon.patch"
                 }
             ]
         }
