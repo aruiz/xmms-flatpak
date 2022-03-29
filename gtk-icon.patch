@@ -1,0 +1,67 @@
+diff -u -r gtk+-1.2.8-orig/gdk/gdk.h gtk+-1.2.8/gdk/gdk.h
+--- gtk+-1.2.8-orig/gdk/gdk.h	2000-02-17 02:19:16.000000000 +0100
++++ gtk+-1.2.8/gdk/gdk.h	2022-03-30 00:52:29.362006479 +0200
+@@ -373,6 +373,9 @@
+ 					  GdkBitmap	  *mask);
+ void	      gdk_window_set_icon_name	 (GdkWindow	  *window, 
+ 					  const gchar	  *name);
++void          gdk_window_set_net_wm_icon (GdkWindow *window,
++					  const guchar   *data,
++					  int             size);
+ void	      gdk_window_set_group	 (GdkWindow	  *window, 
+ 					  GdkWindow	  *leader);
+ void	      gdk_window_set_decorations (GdkWindow	  *window,
+diff -u -r gtk+-1.2.8-orig/gdk/gdkwindow.c gtk+-1.2.8/gdk/gdkwindow.c
+--- gtk+-1.2.8-orig/gdk/gdkwindow.c	2000-01-31 23:26:03.000000000 +0100
++++ gtk+-1.2.8/gdk/gdkwindow.c	2022-03-30 00:54:20.320010998 +0200
+@@ -2021,6 +2021,50 @@
+ 			   &attr);
+ }
+ 
++
++void
++gdk_window_set_net_wm_icon (GdkWindow *window,
++         const guchar   *xpm,
++         int             xpm_size)
++{
++  GdkWindowPrivate *window_private = (GdkWindowPrivate*) window;
++
++	Atom _NET_WM_ICON = XInternAtom(window_private->xdisplay, "_NET_WM_ICON", False);
++	if (_NET_WM_ICON == None) {
++		return;
++	}
++
++  XImage *image = NULL, *mask = NULL;
++  if (XpmCreateImageFromData (window_private->xdisplay, xpm, &image, &mask, NULL) || !image) {
++    g_warning ("Could not open icon data\n");
++    return;
++  }
++    
++	int n_elements = 2 + (image->width * image->height);
++  long *img_buffer = malloc (n_elements * sizeof(long));
++  img_buffer[0] = (long)image->width;
++  img_buffer[1] = (long)image->height;
++
++  int x, y;
++	for (y = 0; y<image->height; y++) {
++    for (x = 0; x<image->width; x++) {
++      int i = 2 + x + (image->width*y);
++      img_buffer[i] = 0xff000000 | image->f.get_pixel(image, x, y);
++    }
++  }
++
++	XChangeProperty(window_private->xdisplay, window_private->xwindow,
++          _NET_WM_ICON, XA_CARDINAL,
++					32, PropModeReplace,
++					(const guchar*)img_buffer,
++					n_elements);
++
++  if (image) XDestroyImage(image);
++  if (mask) XDestroyImage(mask);
++  image = NULL;
++  mask = NULL;
++}
++
+ void          
+ gdk_window_set_icon (GdkWindow *window, 
+ 		     GdkWindow *icon_window,

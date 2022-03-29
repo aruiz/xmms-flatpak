@@ -82,7 +82,7 @@
                 "--disable-static"
             ],
             "make-args": [
-            	"CFLAGS=-std=gnu89",
+            	"CFLAGS=-std=gnu90 -lXpm",
             	"LIBTOOL=/usr/bin/libtool --tag=CC"
             ],
             "sources": [
@@ -100,6 +100,11 @@
                     "type": "patch",
                     "strip-components": 0,
                     "path": "config-guess.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 1,
+                    "path": "gtk-icon.patch"
                 }
            ]
 	},
@@ -110,7 +115,7 @@
                 "--disable-oss"
             ],
             "make-args": [
-            	"CFLAGS=-std=gnu89 -DM_PI=3.1415926535897932384 -DM_SQRT2=1.41421356237309504880",
+            	"CFLAGS=-std=gnu89",
             	"LIBTOOL=/usr/bin/libtool --tag=CC"
             ],
             "sources": [
@@ -123,6 +128,11 @@
                     "type": "patch",
                     "strip-components": 1,
                     "path": "xmms-config-sub.patch"
+                },
+                {
+                    "type": "patch",
+                    "strip-components": 1,
+                    "path": "xmms-icon.patch"
                 }
             ]
         }
