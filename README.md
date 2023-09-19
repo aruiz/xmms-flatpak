@@ -8,11 +8,7 @@ This project provides a Flatpak package for XMMS 1.2, an older MP3 player for Li
 
 ## Why is it not on Flathub?
 
-We do not publish this application on Flathub for several reasons:
-
-1. **Age and Security:** XMMS 1.2 is an outdated application that has not received updates for a significant period of time. Using outdated software can pose security risks.
-
-2. **Lack of Maintenance:** Older software may have compatibility issues with modern Linux distributions, and it's challenging to maintain it for a Flatpak environment.
+We do not publish this application on Flathub for age and security reasons, XMMS 1.2 is an outdated application that has not received updates for a significant period of time. Using outdated unmaintained software can pose security risks even if somewhat confined by the Flatpak sandbox.
 
 ## Preserving a Piece of History
 
