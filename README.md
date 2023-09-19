@@ -2,10 +2,6 @@
 
 This project provides a Flatpak package for XMMS 1.2, an older MP3 player for Linux. Please note that this application is quite old, and it is highly recommended to use more modern and actively maintained music players due to potential security issues.
 
-## XMMS 1.2 Information
-
-- **Last Release:** XMMS 1.2 was last released on [Date of Last Release] (Please replace with the actual release date if available).
-
 ## Why is it not on Flathub?
 
 We do not publish this application on Flathub for age and security reasons, XMMS 1.2's last release was in 2007 and has not received updates ever since. Using outdated unmaintained software can pose security risks even if confined by the Flatpak sandbox.
