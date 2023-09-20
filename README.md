@@ -17,11 +17,10 @@ The intent with this project is to preserve a working version of XMMS 1.2, allow
 To build and run the XMMS 1.2 Flatpak from the command line, follow these steps:
 
 ```shell
- git clone https://github.com/aruiz/xmms-flatpak.git        # 1. Clone this repo
- cd xmms-flatpak                                            # 2. Enter repo directory
- flatpak-builder build-dir org.xmms.XMMS.json --force-clean # 3. Build the Flatpak application
- flatpak --user install build-dir/org.xmms.XMMS.flatpak     # 4. Install the built Flatpak
- flatpak run org.xmms.XMMS                                  # 5. Run XMMS 1.2
+ git clone https://github.com/aruiz/xmms-flatpak.git                         # 1. Clone this repo
+ cd xmms-flatpak                                                             # 2. Enter repo directory
+ flatpak-builder --user --install --force-clean build-dir org.xmms.XMMS.json # 3. Build and installthe Flatpak application
+ flatpak run org.xmms.XMMS                                                   # 4. Run XMMS 1.2
 ```
 
 Please note that the build process might require additional dependencies and setup. Refer to the [Flatpak documentation](https://flatpak.org/documentation.html) for more detailed information on building and running Flatpak applications.
